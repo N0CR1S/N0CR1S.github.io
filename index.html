@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sn00py.nix</title>
+  <meta name="description" content="sn00py.nix: Linux, Nix, Python, security and Evangelion.">
+  <meta name="color-scheme" content="light dark">
+  <!-- OPTIONAL: to ask search engines not to list your site, delete this whole comment
+       and put this line here instead (anyone with the link can still open the site):
+       meta name="robots" content="noindex"  (written as a normal <meta ...> tag)
+  -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Applies the saved theme before the page paints. Light is the default. -->
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#about">Skip to content</a>
+
+  <div class="wrap">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="masthead">
+      <div class="masthead-text">
+        <h1 class="site-title">sn00py<span>.nix</span></h1>
+
+        <pre class="term" aria-label="Terminal: sn00py runs touch grass and gets permission denied">[𝚜𝚗𝟶𝟶𝚙𝚢@𝚗𝚒𝚡𝚘𝚜:~]$ 𝚝𝚘𝚞𝚌𝚑 𝚐𝚛𝚊𝚜𝚜
+<span class="err">𝚝𝚘𝚞𝚌𝚑: 𝚌𝚊𝚗𝚗𝚘𝚝 𝚝𝚘𝚞𝚌𝚑 '𝚐𝚛𝚊𝚜𝚜': 𝙿𝚎𝚛𝚖𝚒𝚜𝚜𝚒𝚘𝚗 𝚍𝚎𝚗𝚒𝚎𝚍</span>
+[𝚜𝚗𝟶𝟶𝚙𝚢@𝚗𝚒𝚡𝚘𝚜:~]$ <span class="cursor"></span></pre>
+      </div>
+
+      <!-- EDIT: sticker image for the header (shows on wider screens). File: snoopy-header.png -->
+      <div class="masthead-sticker" aria-hidden="true">
+        <img src="snoopy-header.png" alt="" onerror="this.remove()">
+      </div>
+    </header>
+
+    <!-- ===================== NAV ===================== -->
+    <nav aria-label="Sections">
+      <ul class="nav">
+        <li><a href="#about">about</a></li>
+        <li><a href="#interests">interests</a></li>
+        <li><a href="#blog">blog</a></li>
+        <li><a href="#music">music</a></li>
+        <li><a href="#photos">photos</a></li>
+        <li class="spacer">
+          <!-- Hidden until JavaScript is running, since it needs JavaScript to work -->
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" hidden>dark mode</button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="layout">
+
+      <!-- ===================== SIDEBAR ===================== -->
+      <aside class="side" aria-label="Profile">
+
+        <section class="box">
+          <h2>sn00py.nix</h2>
+          <div class="body">
+            <!-- EDIT: your avatar. File: avatar.png (put it next to index.html) -->
+            <div class="avatar">
+              <img src="avatar.png" alt="sn00py's avatar" onerror="this.remove()">
+            </div>
+            <p class="handle">sn00py.nix</p>
+            <p class="status">online-ish</p>
+          </div>
+        </section>
+
+        <section class="box">
+          <h2>details</h2>
+          <div class="body">
+            <dl class="details">
+              <dt>handle</dt><dd>sn00py.nix</dd>
+              <dt>home</dt><dd>nixos</dd>
+              <dt>from</dt><dd>the internet</dd>
+              <dt>likes</dt><dd>nix, python, eva</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section class="box">
+          <h2>mood</h2>
+          <div class="body">
+            <!-- EDIT: change the values between the quotes -->
+            <pre class="nixbox">{
+  mood   = "tinkering";
+  coffee = true;
+  sleep  = "optional";
+}</pre>
+          </div>
+        </section>
+
+        <section class="box">
+          <h2>currently</h2>
+          <div class="body">
+            <!-- EDIT: change these whenever you like -->
+            <ul class="now">
+              <li><b>listening</b> Måneskin, CUPSIZE</li>
+              <li><b>watching</b> Evangelion</li>
+              <li><b>learning</b> Python, networking, how things break</li>
+              <li><b>running</b> Nix</li>
+            </ul>
+          </div>
+        </section>
+      </aside>
+
+      <!-- ===================== MAIN ===================== -->
+      <main class="main">
+
+        <!-- ---------- ABOUT ---------- -->
+        <section class="box" id="about">
+          <h2>about me <span class="badge">new!</span></h2>
+          <div class="body">
+            <!-- EDIT: sticker image inside the About box. File: snoopy-about.png -->
+            <figure class="sticker about-sticker">
+              <img src="snoopy-about.png" alt="" onerror="this.parentNode.remove()">
+            </figure>
+
+            <!-- EDIT: rewrite any of this in your own words. It's only a starting point. -->
+            <p>hi, i'm sn00py. i spend more time in a terminal than outside, and i'm fine with that.</p>
+            <p>i've hopped through Arch, Void and Gentoo, poked at FreeBSD, and Nix is the one that really got me: describe the whole system in a file, rebuild it, roll it back when i break it. which happens.</p>
+            <p>python is my go-to for small tools and experiments. i'm headed toward cybersecurity, but the slow, honest way: learn how things actually work first, and write my own stuff instead of just running someone else's tool and calling it hacking.</p>
+            <p>also, yes, i will talk about Neon Genesis Evangelion if you let me.</p>
+          </div>
+        </section>
+
+        <!-- ---------- INTERESTS ---------- -->
+        <section class="box" id="interests">
+          <h2>interests</h2>
+          <div class="body">
+            <!-- EDIT: change, add or delete rows. One <tr>...</tr> per row. -->
+            <table class="interests">
+              <tbody>
+                <tr><th scope="row">systems</th><td>Arch, Void, Gentoo, FreeBSD, and above all Nix / NixOS</td></tr>
+                <tr><th scope="row">code</th><td>Python, Nix expressions, shell scripts</td></tr>
+                <tr><th scope="row">security</th><td>Cybersecurity, learned properly: fundamentals first, tools second</td></tr>
+                <tr><th scope="row">anime</th><td>Neon Genesis Evangelion</td></tr>
+                <tr><th scope="row">music</th><td>Måneskin, CUPSIZE</td></tr>
+                <tr><th scope="row">more</th><td>and many more things, the list keeps growing</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ---------- BLOG ---------- -->
+        <section class="box" id="blog">
+          <h2>blog</h2>
+          <div class="body">
+            <!-- EDIT: these are sample posts. Rewrite them, change the dates, or delete them.
+                 To add a post, copy a whole <article class="post">...</article> block
+                 and paste it at the top. -->
+            <article class="post">
+              <h3>hello world</h3>
+              <p class="post-meta">posted 2026-10-18</p>
+              <p>first post. this page has no trackers and no cookies, and it lives on github pages. more soon.</p>
+            </article>
+
+            <article class="post">
+              <h3>why i ended up on nix</h3>
+              <p class="post-meta">posted 2026-10-17</p>
+              <p>after arch, void and gentoo i figured i had seen it all. then i found out you can write down your whole system as code, rebuild it anywhere and undo mistakes with one command. i haven't gone back since.</p>
+            </article>
+
+            <article class="post">
+              <h3>learning security the slow way</h3>
+              <p class="post-meta">posted 2026-10-15</p>
+              <p>the plan: understand networks and operating systems properly, write small python tools myself, and only break things in labs i set up on my own machines. no shortcuts, no script-kiddie stuff.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ---------- MUSIC ---------- -->
+        <section class="box" id="music">
+          <h2>music</h2>
+          <div class="body">
+            <p>on repeat lately:</p>
+            <ul class="tracks">
+              <li><b>Måneskin</b> <span>KOOL KIDS</span> <a href="https://open.spotify.com/intl-de/track/2psPo5syHobyRjH1shxFsf" rel="noopener noreferrer">listen on Spotify</a></li>
+              <li><b>CUPSIZE</b> <span>Юра Юра</span> <a href="https://open.spotify.com/intl-de/track/60rhfD30Cpfj4SY5A7ft4Z" rel="noopener noreferrer">listen on Spotify</a></li>
+            </ul>
+            <p class="note">no embedded player on purpose: embeds load stuff from other sites and can track you. links only.</p>
+            <!-- Want a real player later? Paste the "embed" code from Bandcamp, SoundCloud, etc. here.
+                 Be aware it makes visitors' browsers contact that site. -->
+          </div>
+        </section>
+
+        <!-- ---------- PHOTOS ---------- -->
+        <section class="box" id="photos">
+          <h2>photos</h2>
+          <div class="body">
+            <!-- EDIT: files photo-1.png ... photo-4.png go next to index.html.
+                 If a picture is a .jpg, change the name in src="..." to match.
+                 If a file is missing, the striped placeholder shows instead. -->
+            <div class="gallery">
+              <figure data-label="photo 1"><img src="photo-1.png" alt="photo 1" loading="lazy" onerror="this.remove()"></figure>
+              <figure data-label="photo 2"><img src="photo-2.png" alt="photo 2" loading="lazy" onerror="this.remove()"></figure>
+              <figure data-label="photo 3"><img src="photo-3.png" alt="photo 3" loading="lazy" onerror="this.remove()"></figure>
+              <figure data-label="photo 4"><img src="photo-4.png" alt="photo 4" loading="lazy" onerror="this.remove()"></figure>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <!-- EDIT: sticker image for the footer. File: snoopy-footer.png -->
+      <figure class="sticker footer-sticker">
+        <img src="snoopy-footer.png" alt="" onerror="this.parentNode.remove()">
+      </figure>
+      <p>no cookies, no trackers, no analytics.</p>
+      <p>site designed and coded by <a href="https://claude.ai">Claude</a> (Anthropic).</p>
+      <p>last updated: 2026-10-18</p>
+      <p>Peanuts characters are © Peanuts Worldwide LLC / Charles M. Schulz. Fan page, not affiliated.</p>
+    </footer>
+
+  </div>
+
+  <!-- Light/dark toggle. The choice is saved only in the visitor's own browser. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+
+      function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        btn.textContent = theme === 'dark' ? 'light mode' : 'dark mode';
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      }
+
+      apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+      btn.hidden = false;
+
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>

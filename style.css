@@ -1,0 +1,445 @@
+/* ==========================================================
+   sn00py.nix — style.css
+   Palette is taken from the avatar: slate-blue background,
+   cream fur, maroon sweater, yellow bird.
+   Light mode is the default; dark mode is toggled by the
+   button and saved in the visitor's own browser.
+   To change colors, edit the variables in the two blocks below.
+   ========================================================== */
+
+:root {
+  color-scheme: light;
+
+  --bg: #d9dee9;          /* page background (light slate) */
+  --bg-dot: #c5ccdc;      /* tiny dots on the background */
+  --panel: #f5f0e6;       /* box background (cream) */
+  --panel-alt: #ebe4d4;   /* secondary cream */
+  --ink: #221a1d;         /* main text */
+  --ink-soft: #4a4350;    /* softer text */
+  --line: #2a2226;        /* borders */
+  --shadow: #6b7a9e;      /* hard drop shadows (slate) */
+  --title-a: #5a6a92;     /* box title bar gradient */
+  --title-b: #3f4b6e;
+  --title-ink: #f5f0e6;
+  --accent: #8e2f37;      /* links (sweater maroon) */
+  --hi: #8e2f37;          /* decorative highlights */
+
+  /* these stay the same in both modes */
+  --yellow: #e6c068;      /* Woodstock yellow */
+  --on-yellow: #221a1d;
+  --term-bg: #1c1a24;
+  --term-ink: #f5f0e6;
+  --term-err: #f0959b;
+
+  --mono: ui-monospace, "Cascadia Mono", "DejaVu Sans Mono", "SF Mono",
+          Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: Verdana, Tahoma, Geneva, "DejaVu Sans", sans-serif;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #1f2436;
+  --bg-dot: #2a3048;
+  --panel: #2b3247;
+  --panel-alt: #353d57;
+  --ink: #ece6d8;
+  --ink-soft: #bdbacb;
+  --line: #7d89ad;
+  --shadow: #11141f;
+  --title-a: #6b7a9e;
+  --title-b: #4a5779;
+  --title-ink: #fff8ec;
+  --accent: #e6c068;
+  --hi: #d0626a;
+}
+
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--bg-dot) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+a:hover { background: var(--yellow); color: var(--on-yellow); text-decoration: none; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--yellow);
+  color: var(--on-yellow);
+  padding: 6px 10px;
+  border: 2px solid var(--line);
+  z-index: 10;
+}
+.skip:focus { left: 8px; }
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.masthead-text { min-width: 0; }
+
+.site-title {
+  margin: 0 0 10px;
+  font: 700 clamp(2rem, 7vw, 3.1rem)/1.1 var(--mono);
+  letter-spacing: -1px;
+  text-shadow: 3px 3px 0 var(--yellow);
+}
+.site-title span { color: var(--accent); }
+
+.term {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--term-bg);
+  color: var(--term-ink);
+  border: 2px solid var(--line);
+  font: 0.85rem/1.55 var(--mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.term .err { color: var(--term-err); }
+.term .cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  vertical-align: text-bottom;
+  background: var(--yellow);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+.masthead-sticker {
+  display: none;
+}
+
+@media (min-width: 761px) {
+  .masthead { grid-template-columns: 1fr 150px; align-items: center; }
+  .masthead-sticker { display: block; }
+  .masthead-sticker img { display: block; width: 100%; height: auto; }
+}
+
+/* ---------- nav ---------- */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a,
+.theme-toggle {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--shadow);
+  font: 700 0.85rem/1.5 var(--mono);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav a:hover,
+.theme-toggle:hover {
+  background: var(--yellow);
+  color: var(--on-yellow);
+}
+.nav a:active,
+.theme-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+.nav .spacer { margin-left: auto; }
+
+/* ---------- layout ---------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+  align-items: start;
+}
+
+.side,
+.main {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- boxes (little retro windows) ---------- */
+
+.box {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow);
+  scroll-margin-top: 16px;
+}
+
+.box > h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 10px;
+  background: linear-gradient(var(--title-a), var(--title-b));
+  color: var(--title-ink);
+  border-bottom: 2px solid var(--line);
+  font: 700 0.9rem/1.4 var(--mono);
+  letter-spacing: 0.3px;
+}
+.box > h2::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  background: var(--yellow);
+  border: 1px solid var(--line);
+}
+
+.box .body { padding: 12px 14px; }
+.box .body > :first-child { margin-top: 0; }
+.box .body > :last-child { margin-bottom: 0; }
+
+.badge {
+  margin-left: auto;
+  padding: 0 6px;
+  background: var(--yellow);
+  color: var(--on-yellow);
+  border: 1px solid var(--line);
+  font: 700 0.7rem/1.5 var(--mono);
+  text-transform: uppercase;
+  animation: blink 1.4s steps(1) infinite;
+}
+
+/* ---------- sidebar ---------- */
+
+.avatar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--shadow);
+  border: 2px solid var(--line);
+}
+.avatar::before {
+  content: "sn";
+  font: 700 3.5rem var(--mono);
+  color: var(--title-ink);
+}
+.avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.handle {
+  margin: 10px 0 2px;
+  font: 700 1.05rem var(--mono);
+  word-break: break-all;
+}
+.status { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+
+.details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  margin: 0;
+  font-size: 0.85rem;
+}
+.details dt { font-weight: 700; color: var(--ink-soft); }
+.details dd { margin: 0; overflow-wrap: anywhere; }
+
+.nixbox {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--panel-alt);
+  border: 2px dashed var(--line);
+  font: 0.8rem/1.6 var(--mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.now { margin: 0; padding: 0; list-style: none; font-size: 0.88rem; }
+.now li { padding: 5px 0; border-bottom: 1px dotted var(--line); }
+.now li:last-child { border-bottom: 0; }
+.now b {
+  display: inline-block;
+  min-width: 5.2em;
+  font: 700 0.78rem var(--mono);
+  color: var(--accent);
+}
+
+/* ---------- stickers (extra images) ---------- */
+
+.sticker { margin: 0; }
+.sticker img { display: block; max-width: 100%; height: auto; }
+
+.about-sticker {
+  float: right;
+  width: 130px;
+  margin: 0 0 8px 14px;
+}
+
+@media (max-width: 480px) {
+  .about-sticker { float: none; margin: 0 auto 10px; }
+}
+
+.footer-sticker { width: 110px; margin: 0 auto 10px; }
+
+/* ---------- interests table ---------- */
+
+.interests {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.interests th,
+.interests td {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+.interests th {
+  width: 7.5em;
+  background: var(--panel-alt);
+  font: 700 0.8rem/1.6 var(--mono);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .interests th { white-space: normal; width: 6em; }
+}
+
+/* ---------- blog ---------- */
+
+.post { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.post:first-child { padding-top: 0; }
+.post:last-child { padding-bottom: 0; border-bottom: 0; }
+.post h3 { margin: 0 0 2px; font: 700 1rem var(--mono); }
+.post-meta { margin: 0 0 6px; color: var(--ink-soft); font: 0.75rem var(--mono); }
+.post p { margin: 0; }
+
+/* ---------- music ---------- */
+
+.tracks { margin: 0 0 10px; padding: 0; list-style: none; }
+.tracks li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  padding: 7px 10px;
+  margin-bottom: 6px;
+  background: var(--panel-alt);
+  border: 1px solid var(--line);
+}
+.tracks b { font-family: var(--mono); }
+.note { color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---------- gallery ---------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+.gallery figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--shadow);
+  background: repeating-linear-gradient(
+    45deg, var(--panel-alt) 0 8px, var(--panel) 8px 16px);
+}
+.gallery figure::before {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink-soft);
+  font: 0.78rem var(--mono);
+}
+.gallery img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 22px;
+  padding: 14px;
+  text-align: center;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.footer p { margin: 4px 0; }
+
+/* ---------- motion ---------- */
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .term .cursor,
+  .badge { animation: none; }
+  .nav a:active,
+  .theme-toggle:active { transform: none; }
+}
